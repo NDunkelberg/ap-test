@@ -108,15 +108,17 @@ void AC_PosControl_Sub::relax_alt_hold_controllers()
     _pid_accel_z.reset_filter();
 }
 
-void AC_PosControl_Sub::update_dist_controller(float& target_forward, float distance_error, float dt)
+void AC_PosControl_Sub::update_dist_controller(float& target_forward, float distance_error, float dt, bool update)
 {
     // simple pid controller for distance control
     // todo: check if useful to use implemented xy-position controller
     float p, i, d;
 
-    _pid_dist.set_dt(dt);
-
-    _pid_dist.set_input_filter_all(distance_error);
+    if (update)
+    {
+        _pid_dist.set_dt(dt);
+        _pid_dist.set_input_filter_all(distance_error);
+    }
 
     // separately calculate p, i, d values for logging
     // probably better to use square root constrain
