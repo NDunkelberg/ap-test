@@ -134,6 +134,9 @@ void AC_PosControl_Sub::update_dist_controller(float& target_forward, float dist
     d = _pid_dist.get_d();
 
     target_forward = p + i + d;
+
+    // set the cutoff frequency of the motors forward input filter
+    _motors.set_forward_filter_cutoff(POSCONTROL_FORWARD_CUTOFF_FREQ);
 }
 
 void AC_PosControl_Sub::update_mesh_cnt_controller(float& target_forward, float mesh_cnt_error, float dt, bool update)
@@ -160,6 +163,9 @@ void AC_PosControl_Sub::update_mesh_cnt_controller(float& target_forward, float 
     d = _pid_mesh_cnt.get_d();
 
     target_forward = p + i + d;
+
+    // set the cutoff frequency of the motors forward input filter
+    _motors.set_forward_filter_cutoff(POSCONTROL_FORWARD_CUTOFF_FREQ);
 }
 
 
@@ -185,4 +191,7 @@ void AC_PosControl_Sub::update_optfl_controller(float& target_lateral, float opt
     d = _pid_optfl.get_d();
 
     target_lateral = p + i + d;
+
+    // set the cutoff frequency of the motors lateral input filter
+    _motors.set_lateral_filter_cutoff(POSCONTROL_LATERAL_CUTOFF_FREQ);
 }
