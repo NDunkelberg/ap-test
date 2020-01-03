@@ -48,7 +48,7 @@ public:
 
     /// Constructor
     AC_PosControl(AP_AHRS_View& ahrs, const AP_InertialNav& inav,
-                  const AP_Motors& motors, AC_AttitudeControl& attitude_control);
+                  AP_Motors& motors, AC_AttitudeControl& attitude_control);
 
     ///
     /// initialisation functions
