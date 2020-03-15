@@ -214,7 +214,10 @@ public:
         k_param_pilot_speed_dn,
 
         //Net Tracking library
-        k_param_nettracking
+        k_param_nettracking,
+
+        //Net Cleaning library
+        k_param_netcleaning,
 
         k_param_vehicle = 257, // vehicle common block of parameters
     };
